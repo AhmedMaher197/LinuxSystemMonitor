@@ -9,8 +9,7 @@ using std::to_string;
 // Method used to show time in HH:MM:SS format
 string Format::ElapsedTime(long seconds) 
 { 
-  long sec_tot = seconds;
-  double hour = (double) sec_tot / 3600.0; // seconds in hours
+  double hour = (double) seconds / 3600.0; // seconds in hours
   double hour_int;
   double hour_fra = modf(hour, &hour_int);//split integer and decimal part of hours
 
@@ -22,8 +21,8 @@ string Format::ElapsedTime(long seconds)
   double seconds_int;
   modf(seconds_values, &seconds_int); // split integer and decimal part of minutes
 
-  std::stringstream ss;
-  ss << std::setfill('0') << std::setw(2) << hour_int << ":" << std::setfill('0') << std::setw(2) <<  minutes_int << ":" << std::setfill('0') << std::setw(2) << seconds_int;
-  string time_obs_def = ss.str();
-  return time_obs_def;
+  std::stringstream str;
+  str << std::setfill('0') << std::setw(2) << hour_int << ":" << std::setfill('0') << std::setw(2) <<  minutes_int << ":" << std::setfill('0') << std::setw(2) << seconds_int;
+  string time = str.str();
+  return time;
 }
